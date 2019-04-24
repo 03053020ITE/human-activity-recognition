@@ -19,7 +19,7 @@ train2['classe'].value_counts().plot(kind='bar',
                                    title='Training Examples by Activity Type')
 plt.show()
 ``` 
-![image](https://github.com/03053020ITE/ship-detection/blob/master/show/7.PNG)
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/act_type.PNG)
 
 因為要放入深度學習進去訓練，因此把 label 轉換為 1-hot-encoding
 A 轉換為 10000 ； B 轉換為 01000；C 轉換為 00100；D 轉換為 00010；E 轉換為 00001
@@ -27,6 +27,7 @@ A 轉換為 10000 ； B 轉換為 01000；C 轉換為 00100；D 轉換為 00010�
 train3 = pd.get_dummies(data=train2, columns=["classe"])
 train3[:2]
 ``` 
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/one_hot.PNG)
 將訓練數據拆分為訓練集及驗證集，方便訓練時查看不要 overfitting
 ```
 msk = np.random.rand(len(train2)) < 0.8
@@ -38,6 +39,7 @@ test_df = train3[~msk]
 nparray_train = train_df.values
 nparray_test = test_df.values
 ``` 
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/numpy_values.PNG)
 把前 52 行數據當成 feature ，最後 5 行數據當成 label
 ```
 train_label = nparray_train[:, 52:57]
@@ -57,5 +59,9 @@ scaler = preprocessing.StandardScaler()
 train_feature = scaler.fit_transform(train_feature)
 test_feature = scaler.fit_transform(test_feature)
 ```
-在神經網路架設部分，使用了四層 Dense 層，且加入 Dropout
-![image](https://github.com/03053020ITE/ship-detection/blob/master/show/7.PNG)
+## Prediction Modeling
+#### 使用深度學習(Dense 層)
+神經網路架設了四層 Dense 層，且加入 Dropout防止過度擬合，因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+#### 使用機器學習()
+在機器學習中首先使用
