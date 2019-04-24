@@ -28,6 +28,7 @@ train3 = pd.get_dummies(data=train2, columns=["classe"])
 train3[:2]
 ``` 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/one_hot.PNG)
+
 將訓練數據拆分為訓練集及驗證集，方便訓練時查看不要 overfitting
 ```
 msk = np.random.rand(len(train2)) < 0.8
