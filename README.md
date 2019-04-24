@@ -41,6 +41,7 @@ nparray_train = train_df.values
 nparray_test = test_df.values
 ``` 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/numpy_values.PNG)
+
 把前 52 行數據當成 feature ，最後 5 行數據當成 label
 ```
 train_label = nparray_train[:, 52:57]
@@ -63,6 +64,7 @@ test_feature = scaler.fit_transform(test_feature)
 ## Prediction Modeling
 #### 使用深度學習(Dense 層)
 神經網路架設了四層 Dense 層，且加入 Dropout防止過度擬合，因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象
+
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 #### 使用機器學習()
 在機器學習中首先使用
