@@ -1,6 +1,6 @@
 # 基於深度學習及機器學習的人類活動識別預測
 ## Overview
-Human Activity Recognition(HAV) 已經成為過去幾年的一個重要研究領域，並且越來越受到普及計算研究界的關注，那我們可以觀測的不只是一些平常的運動，例如坐下、慢跑、站立，當然也可能是一些工作領域，例如搬運貨物，廚房炒菜，醫生開刀等等，且HAR也能顧及未來許多重要的發展，例如：老人長照、健身姿勢是否不良等。目前市面上的智慧型手機都有一個三軸的加速度計，可以測量三個空間維度的加速度，這使得感測數據更容易地去取得，此外感測數據本身是需要遠端來記錄的，這涉及到了物聯網的感知層以及網路層，而現在處理的是物聯網的應用層面，藉由此應用層面我們來發揮其最大效益。
+Human Activity Recognition(HAV) 已經成為過去幾年的一個重要研究領域，並且越來越受到研究界的關注，那我們可以觀測的不只是一些平常的運動，例如坐下、慢跑、站立，當然也可能是一些工作領域，例如搬運貨物，廚房炒菜，醫生開刀等等，且HAR也能顧及未來許多重要的發展，例如：老人長照、健身姿勢是否不良等。目前市面上的智慧型手機都有一個三軸的加速度計，可以測量三個空間維度的加速度，這使得感測數據更容易地去取得，此外感測數據本身是需要遠端來記錄的，這涉及到了物聯網的感知層以及網路層，而現在處理的是物聯網的應用層面，藉由此應用層面我們來發揮其最大效益。
 ## Background
 HAR 在傳統上多用於區分不同的活動，亦即在同一個時間點執行什麼活動，而此數據集為舉重練習數據集，是用來調查、檢視受測者運動姿勢是否正確，使得運動者能達到最佳的訓練效果。數據集取自六名參與者的腰帶、手腕、手臂、啞鈴，並以五種不同的方式進行一組 10 次的單側啞鈴舉。
 ## Data Exploration
@@ -21,8 +21,7 @@ plt.show()
 ``` 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/act_type.PNG)
 
-因為要放入深度學習進去訓練，因此把 label 轉換為 1-hot-encoding
-A 轉換為 10000 ； B 轉換為 01000；C 轉換為 00100；D 轉換為 00010；E 轉換為 00001
+因為要放入深度學習進去訓練，因此把 label 轉換為 1-hot-encoding，轉換完成後，A 會轉換為 10000 ； B 會轉換為 01000；C 會轉換為 00100；D 會轉換為 00010；E 會轉換為 00001
 ```
 train3 = pd.get_dummies(data=train2, columns=["classe"])
 train3[:2]
@@ -62,9 +61,84 @@ train_feature = scaler.fit_transform(train_feature)
 test_feature = scaler.fit_transform(test_feature)
 ```
 ## Prediction Modeling
-#### 使用深度學習(Dense 層)
-神經網路架設了四層 Dense 層，且加入 Dropout防止過度擬合，因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象
-
+#### 使用深度學習 (Dense)
+神經網路架設了二層 Dense 層，且加入 Dropout 防止過度擬合，那因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象，那神經元參數配置上，我第一層的神經元為 64，第二層的神經元為 32，中間的Dorpout 設置為 0.2，也就是經過一層後自動拋棄 20% 神經元，保留 80% 神經元
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+
+#### 使用深度學習 (CNN)
+神經網路架設了 convolution1D ，在數據處理部分，將 52 行的數據切割成 4 份，並放入分別放入 4 個維度，最後把這四個維度當作一張照片放入 CNN 裡頭
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+
 #### 使用機器學習()
-在機器學習中首先使用
+隨機深林分類器(RandomForestClassifier)進行模型訓練以及預測分析
+```
+from sklearn.ensemble import RandomForestClassifier, 
+RFC = RandomForestClassifier()
+RFC.fit(train_feature,train_label)
+```
+梯度提升決策樹(GradientBoostingClassifie)進行整合模型的訓練以及預測分析
+```
+from sklearn.ensemble import GradientBoostingClassifier
+GBC = GradientBoostingClassifier()
+GBC.fit(train_feature, train_label)
+```
+使用單一決策樹(DecisionTreeClassifier)進行模型訓練以及預測分析
+```
+from sklearn.tree import DecisionTreeClassifier
+DTC = DecisionTreeClassifier()
+DTC.fit(train_feature, train_label)
+```
+使用基於線性假設的支援向量機(SVM)進行模型訓練以及預測分析
+```
+from sklearn.svm import SVC
+SVCL = SVC(kernel='linear')
+SVCL.fit(train_feature, train_label)
+```
+使用基於多項式 kernel 的支援向量機(SVM)分類器進行模型訓練以及預測分析
+```
+from sklearn.svm import SVC
+SVCP = SVC(kernel='poly')
+SVCP.fit(train_feature, train_label)
+```
+使用基於高斯 kernel 的支援向量機(SVM)分類器進行模型訓練以及預測分析
+```
+from sklearn.svm import SVC
+SVCR = SVC(kernel='rbf')
+SVCR.fit(train_feature, train_label)
+```
+使用基於 sigmoid kernel 的支援向量機(SVM)分類器進行模型訓練以及預測分析
+```
+from sklearn.svm import SVC
+SVCS = SVC(kernel='sigmoid')
+SVCS.fit(train_feature, train_label)
+```
+使用高斯樸素貝葉斯(Gaussian Naive Bayes)分類器進行模型訓練以及預測分析
+```
+from sklearn.naive_bayes import GaussianNB
+GNB = GaussianNB()
+GNB.fit(train_feature,train_label)
+```
+使用多項式樸素貝葉斯(Multinomial Naive Bayes)分類器進行模型訓練以及預測分析
+```
+from sklearn.naive_bayes import MultinomialNB
+MNB = MultinomialNB()
+MNB.fit(train_feature,train_label)
+```
+使用伯努力樸素貝葉斯(Bernoulli Naive Bayes)分類器進行模型訓練以及預測分析
+```
+from sklearn.naive_bayes import BernoulliNB
+BNB = BernoulliNB()
+BNB.fit(train_feature,train_label)
+```
+使用邏輯迴歸(LogisticRegression)進行模型訓練以及預測分析
+```
+from sklearn.linear_model import LogisticRegression
+LR = LogisticRegression()
+LR.fit(train_feature, train_label)
+```
+使用 KNN 進行模型訓練以及預測分析
+```
+from sklearn.neighbors import KNeighborsClassifier
+KNC = KNeighborsClassifier()
+KNC.fit(train_feature,train_label)
+```
