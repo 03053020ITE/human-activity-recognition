@@ -142,51 +142,77 @@ from sklearn.neighbors import KNeighborsClassifier
 KNC = KNeighborsClassifier()
 KNC.fit(train_feature,train_label)
 ```
+
 ## Model Application
-# 隨機森林分類器
+以下我會將數據進行三種規則，第一種為沒有正規化也沒有標準化；第二種為有正規化沒有標準化；第三種為有標準化沒有正規化。最後都是顯示最好的準確率之混淆矩陣，此混淆矩陣、準確率為隨機切割的驗證集所算出，預測結果為題目的 20 人答案
+### 隨機森林分類器
 隨機森林分類器方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.9910，只進行正規化轉換後得到的準確率為 0.7323，只進行標準化轉換後得到的準確率為 0.9353
-# 輸出隨機森林分類器在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出隨機森林分類器在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 梯度提升決策樹
+### 梯度提升決策樹
 梯度提升決策樹方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.9682，只進行正規化轉換後得到的準確率為 0.7321，只進行標準化轉換後得到的準確率為 0.8586
-# 輸出梯度提升決策樹在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出梯度提升決策樹在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 單一決策樹
+### 單一決策樹
 單一決策樹方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.9608，只進行正規化轉換後得到的準確率為 0.4489，只進行標準化轉換後得到的準確率為 0.8175
-# 輸出單一決策樹在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出單一決策樹在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 線性假設的支援向量機
+### 線性假設的支援向量機
 線性假設的支援向量機方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.，只進行正規化轉換後得到的準確率為 0.4810，只進行標準化轉換後得到的準確率為 0.7578
-# 輸出線性假設的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出線性假設的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 多項式 kernel 的支援向量機
+### 多項式 kernel 的支援向量機
 多項式 kernel的支援向量機方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.9890，只進行正規化轉換後得到的準確率為 0.4285，只進行標準化轉換後得到的準確率為 0.9485
-# 輸出多項式 kernel 的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出多項式 kernel 的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 高斯 kernel 的支援向量機
+### 高斯 kernel 的支援向量機
 高斯 kernel 的支援向量機方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.2826，只進行正規化轉換後得到的準確率為 0.6075，只進行標準化轉換後得到的準確率為 0.9519
-# 輸出高斯 kernel 的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出高斯 kernel 的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# sogmoid kernel 的支援向量機
+### sogmoid kernel 的支援向量機
 sogmoid kernel 的支援向量機方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.1692，只進行正規化轉換後得到的準確率為 0.5611，只進行標準化轉換後得到的準確率為 0.3491
-# 輸出 sogmoid kernel 的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出 sogmoid kernel 的支援向量機在測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 高斯樸素貝葉斯分類器
+### 高斯樸素貝葉斯分類器
 高斯樸素貝葉斯分類器方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.4991，只進行正規化轉換後得到的準確率為 0.2847，只進行標準化轉換後得到的準確率為 0.3538
-# 輸出高斯樸素貝葉斯分類器測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出高斯樸素貝葉斯分類器測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 多項式樸素貝葉斯分類器
+### 多項式樸素貝葉斯分類器
 多項式樸素貝葉斯分類器方面，如果將沒有正規化、標準化的數據是無法放入得到的準確率的，因為輸入不能為負數，只進行正規化轉換後得到的準確率為 0.3304，只進行標準化轉換依舊是負數，因此也無法求得準確率
-# 輸出多項式樸素貝葉斯分類器測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出多項式樸素貝葉斯分類器測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 伯努力樸素貝葉斯分類器
+### 伯努力樸素貝葉斯分類器
 伯努力樸素貝葉斯分類器方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.4268，只進行正規化轉換後得到的準確率為 0.2972，只進行標準化轉換後得到的準確率為 0.4256
-# 輸出伯努力樸素貝葉斯分類器測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出伯努力樸素貝葉斯分類器測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 邏輯迴歸
+### 邏輯迴歸
 邏輯迴歸方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.7272，只進行正規化轉換後得到的準確率為 0.5621，只進行標準化轉換後得到的準確率為 0.7133
-# 輸出邏輯迴歸測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出邏輯迴歸測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
 
-# 最近鄰居法
+### 最近鄰居法
 最近鄰居法方面，如果將沒有正規化、標準化的數據放入得到的準確率為 0.9189，只進行正規化轉換後得到的準確率為 0.9359，只進行標準化轉換後得到的準確率為 0.9764
-# 輸出最近鄰居法測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+### 輸出最近鄰居法測試集上的分類準確性，以及更加詳細的精確率、召回率、F1指標
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
