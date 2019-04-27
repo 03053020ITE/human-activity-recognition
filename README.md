@@ -175,7 +175,7 @@ KNC.fit(train_feature,train_label)
 
 將切分的驗證集放入驗證準確率、預測test題目的 20 人答案
 
-![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/dense_test.PNG)
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/dense_test2.PNG)
 ### 深度學習(CNN)
 訓練集準確率、驗證集準確率
 
