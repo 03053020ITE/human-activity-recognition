@@ -15,8 +15,7 @@ train2 = train2.dropna(axis=1, how='any')
 ``` 
 畫出五種活動數據的直方圖，看是否有類別數據過多或是過少
 ```
-train2['classe'].value_counts().plot(kind='bar',
-                                   title='Training Examples by Activity Type')
+train2['classe'].value_counts().plot(kind='bar',title='Training Examples by Activity Type')
 plt.show()
 ``` 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/act_type.PNG)
@@ -62,14 +61,37 @@ test_feature = scaler.fit_transform(test_feature)
 ```
 ## Prediction Modeling
 #### 使用深度學習 (Dense)
-神經網路架設了二層 Dense 層，且加入 Dropout 防止過度擬合，那因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象，那神經元參數配置上，我第一層的神經元為 64，第二層的神經元為 32，中間的Dorpout 設置為 0.2，也就是經過一層後自動拋棄 20% 神經元，保留 80% 神經元
+神經網路架設了六層 Dense 層，且加入 Dropout 防止過度擬合，更利用 BatchNormalization來做正規化 那因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象，那神經元參數配置上，我第一層的神經元為 256，第二層的神經元為 256，第三層的神經元為 128，第四層的神經元為 64，第五層的神經元為 32，第六層的神經元為 16，第七層的神經元為 5，中間的Dorpout 設置為 0.2，也就是經過一層後自動拋棄 20% 神經元，保留 80% 神經元
 
+```
+model = Sequential()
+model.add(Dense(256, kernel_initializer='normal',activation = 'relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(256, kernel_initializer='normal',activation = 'relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(128, kernel_initializer='normal',activation = 'relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(64, kernel_initializer='normal',activation = 'relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(32, kernel_initializer='normal',activation = 'relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(16, kernel_initializer='normal',activation = 'relu'))
+model.add(BatchNormalization())
+model.add(Dropout(0.2))
+model.add(Dense(5, activation = 'softmax'))
+```
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn1.PNG)
 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn2.PNG)
 #### 使用深度學習 (CNN)
 神經網路架設了 convolution1D ，在數據處理部分，將 52 行的數據切割成 4 份，並放入分別放入 4 個維度，最後把這四個維度當作一張照片放入 CNN 裡頭
-![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn.PNG)
+
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/CNN.PNG)
 
 #### 使用機器學習
 隨機深林分類器(RandomForestClassifier)進行模型訓練以及預測分析
