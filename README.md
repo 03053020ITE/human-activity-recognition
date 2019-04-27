@@ -94,7 +94,7 @@ model.add(Dense(5, activation = 'softmax'))
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/CNN.PNG)
 
 #### 使用機器學習
-隨機深林分類器(RandomForestClassifier)進行模型訓練以及預測分析
+隨機森林分類器(RandomForestClassifier)進行模型訓練以及預測分析
 ```
 from sklearn.ensemble import RandomForestClassifier, 
 RFC = RandomForestClassifier()
