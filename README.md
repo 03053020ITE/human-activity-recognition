@@ -179,11 +179,11 @@ KNC.fit(train_feature,train_label)
 ### 深度學習(CNN)
 訓練集準確率、驗證集準確率
 
-![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/RFC_A.PNG)
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/CNN_acc.PNG)
 
 將切分驗證集放入驗證準確率、預測結果為題目的 20 人答案
 
-![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/RFC_A.PNG)
+![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/CNN_test.PNG)
 
 以下我會將數據進行三種規則，第一種為沒有正規化也沒有標準化；第二種為有正規化沒有標準化；第三種為有標準化沒有正規化。最後都是顯示最好的準確率之混淆矩陣，此混淆矩陣、準確率為隨機切割的驗證集所算出，預測結果為題目的 20 人答案
 ### 隨機森林分類器
