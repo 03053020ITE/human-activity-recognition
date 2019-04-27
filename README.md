@@ -27,7 +27,7 @@ train3[:2]
 ``` 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/one_hot.PNG)
 
-將訓練數據拆分為訓練集及驗證集，方便訓練時查看不要 overfitting
+將訓練數據拆分為訓練集及驗證集，方便訓練時查看防止 overfitting
 ```
 msk = np.random.rand(len(train2)) < 0.8
 train_df = train3[msk]
@@ -61,7 +61,7 @@ test_feature = scaler.fit_transform(test_feature)
 ```
 ## Prediction Modeling
 #### 使用深度學習 (Dense)
-神經網路架設了六層 Dense 層，且加入 Dropout 防止過度擬合，更利用 BatchNormalization來做正規化 那因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象，那神經元參數配置上，我第一層的神經元為 256，第二層的神經元為 256，第三層的神經元為 128，第四層的神經元為 64，第五層的神經元為 32，第六層的神經元為 16，第七層的神經元為 5，中間的Dorpout 設置為 0.2，也就是經過一層後自動拋棄 20% 神經元，保留 80% 神經元
+神經網路架設了六層 Dense 層，且加入 Dropout 防止過度擬合，更利用 BatchNormalization 來做正規化。因為模型中的參數愈小代表模型愈簡單，愈不容易產生過擬合現象，所以神經元參數配置上，盡量把參數縮減，第一層的神經元為 256，第二層的神經元為 256，第三層的神經元為 128，第四層的神經元為 64，第五層的神經元為 32，第六層的神經元為 16，第七層的神經元為 5，中間的 Dorpout 設置為 0.2，也就是經過一層後自動拋棄 20% 神經元，保留 80% 神經元
 
 ```
 model = Sequential()
@@ -89,7 +89,7 @@ model.add(Dense(5, activation = 'softmax'))
 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/nn2.PNG)
 #### 使用深度學習 (CNN)
-神經網路架設了 convolution1D ，在數據處理部分，將 52 行的數據切割成 4 份，並放入分別放入 4 個維度，最後把這四個維度當作一張照片放入 CNN 裡頭
+神經網路架設了 convolution1D ，在數據處理部分，因為此為四種感測器的數值，因此將 52 行的數據切割成 4 份，並放入分別放入 4 個維度，最後把這四個維度當作一張照片放入 CNN 裡頭
 
 ![image](https://github.com/03053020ITE/human-activity-recognition/blob/master/image/CNN.PNG)
 
